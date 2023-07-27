@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, ButtonToolbar, Modal } from "rsuite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMoneyStore } from "../../stores/useMoneyStore";
 import InputDollar from "./InputDollar";
 import InputCoin from "./InputCoin";
@@ -33,6 +33,10 @@ const ReplenishmentModal = ({
     }
     addCoin(replenishment);
   };
+
+  useEffect(() => {
+    setСurrencyType(paymentType);
+  }, [paymentType]);
 
   return (
     <Modal open={isOpen} onClose={onClose} size="xs">
