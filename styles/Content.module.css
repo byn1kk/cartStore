@@ -1,0 +1,9 @@
+.Wrapper {
+  margin-top: 50px;
+}
+.MainGrid {
+  background: white;
+  border-radius: 12px;
+  padding: 8px;
+  margin-bottom: 50px;
+}

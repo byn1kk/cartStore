@@ -3,6 +3,7 @@ import { Icon } from "@rsuite/icons";
 import CreditCardPlusIcon from "@rsuite/icons/CreditCardPlus";
 import CouponIcon from "@rsuite/icons/Coupon";
 import { СurrencyType } from "../../stores/models/IPayment";
+import styles from "../../styles/RadioPaymentType.module.css";
 
 interface IRadioPaymentTypeProps {
   paymentType: СurrencyType;
@@ -14,13 +15,7 @@ const RadioPaymentType = ({
   onChange,
 }: IRadioPaymentTypeProps) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        marginBottom: 20,
-      }}
-    >
+    <div className={styles.RadioPaymentTypeBlock}>
       <RadioTileGroup
         defaultValue={paymentType}
         inline

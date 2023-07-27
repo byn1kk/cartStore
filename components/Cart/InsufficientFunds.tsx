@@ -4,6 +4,7 @@ import { СurrencyType } from "../../stores/models/IPayment";
 import { useMoneyStore } from "../../stores/useMoneyStore";
 import ReplenishmentModal from "../Modal/ReplenishmentModal";
 import { useState } from "react";
+import styles from "../../styles/InsufficientFunds.module.css";
 
 interface IInsufficientFundsProps {
   paymentType: СurrencyType;
@@ -29,7 +30,7 @@ const InsufficientFunds = ({ paymentType }: IInsufficientFundsProps) => {
         paymentType={paymentType}
       />
       {paymentType === СurrencyType.Coin && coins < sum && (
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className={styles.InsufficientBlock}>
           <p>На счету недостаточно Сoin</p>
           <Button size="xs" appearance="link" onClick={() => setOpen(true)}>
             пополнить
@@ -37,7 +38,7 @@ const InsufficientFunds = ({ paymentType }: IInsufficientFundsProps) => {
         </div>
       )}
       {paymentType === СurrencyType.Dollar && dollars < sum && (
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className={styles.InsufficientBlock}>
           <p>На счету недостаточно Dollar</p>
           <Button size="xs" appearance="link" onClick={() => setOpen(true)}>
             пополнить

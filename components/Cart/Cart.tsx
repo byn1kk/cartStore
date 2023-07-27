@@ -5,6 +5,7 @@ import { useState } from "react";
 import { СurrencyType } from "../../stores/models/IPayment";
 import PaymentButton from "./PaymentButton";
 import RadioPaymentType from "./RadioPaymentType";
+import styles from "../../styles/Cart.module.css";
 
 interface ICartProps {
   onClose: () => void;
@@ -20,15 +21,7 @@ const Cart = ({ onClose }: ICartProps) => {
 
   if (items.length === 0) {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          gap: 8,
-        }}
-      >
+      <div className={styles.EmptyCart}>
         <h5>Корзина пуста</h5>
         <Button onClick={onClose}>Вернуться в магазин</Button>
       </div>
@@ -49,7 +42,7 @@ const Cart = ({ onClose }: ICartProps) => {
           </List.Item>
         ))}
       </List>
-      <div style={{ marginTop: 20 }}>
+      <div className={styles.Cart}>
         <RadioPaymentType paymentType={paymentType} onChange={setPaymentType} />
         <PaymentButton paymentType={paymentType} onClick={onClose} />
       </div>

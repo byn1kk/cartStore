@@ -1,0 +1,16 @@
+.productPanel {
+  display: inline-block;
+  height: 130px;
+  width: 200px;
+  margin: 8px;
+}
+.productPanelTitle {
+  display: block;
+  height: 60px;
+  fontsize: 15px;
+}
+.productPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

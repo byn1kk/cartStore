@@ -1,6 +1,7 @@
 import { IconButton, InputNumber } from "rsuite";
 import CloseIcon from "@rsuite/icons/Close";
 import { IProductByCart } from "../../stores/models/IProduct";
+import styles from "../../styles/CartList.module.css";
 
 interface ICartListProps {
   item: IProductByCart;
@@ -11,31 +12,14 @@ interface ICartListProps {
 const CartList = ({ item, removeProduct, setCountProduct }: ICartListProps) => {
   return (
     <>
-      <div
-        key={item.id}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginBottom: 10,
-        }}
-      >
+      <div key={item.id} className={styles.CartListBlock}>
         <div>{item.title}</div>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "nowrap",
-            gap: 8,
-            alignItems: "center",
-          }}
-        >
+        <div className={styles.CartListPrice}>
           {item.price}$ <b>x</b>
           <InputNumber
             min={1}
             size="sm"
-            style={{
-              width: 70,
-            }}
+            className={styles.InputNumberPrice}
             defaultValue={item.count}
             onChange={(value: number) => setCountProduct(item.id, value)}
           />

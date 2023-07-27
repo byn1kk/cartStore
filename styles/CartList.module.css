@@ -1,0 +1,15 @@
+.CartListBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.CartListPrice {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  align-items: center;
+}
+.InputNumberPrice {
+  width: 70px;
+}

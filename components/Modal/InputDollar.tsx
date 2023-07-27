@@ -1,5 +1,5 @@
 import { InputNumber } from "rsuite";
-
+import styles from "../../styles/InputDollar.module.css";
 interface IInputDollarProps {
   onChange: (value: number) => void;
 }
@@ -10,7 +10,7 @@ const InputDollar = ({ onChange }: IInputDollarProps) => {
       Укажите сумму для пополнения:
       <InputNumber
         onChange={(value: number) => onChange(value)}
-        style={{ marginTop: 8 }}
+        className={styles.InputDollar}
       />
     </label>
   );

@@ -4,6 +4,7 @@ import { useMoneyStore } from "../../stores/useMoneyStore";
 import InputDollar from "./InputDollar";
 import InputCoin from "./InputCoin";
 import { СurrencyType } from "../../stores/models/IPayment";
+import styles from "../../styles/ReplenishmentModal.module.css";
 
 interface IAddDollarModalProps {
   isOpen: boolean;
@@ -39,13 +40,7 @@ const ReplenishmentModal = ({
         <Modal.Title>Пополнить счёт</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div
-          style={{
-            marginBottom: 18,
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <div className={styles.ChangeButton}>
           <ButtonToolbar>
             <ButtonGroup>
               <Button
@@ -63,7 +58,7 @@ const ReplenishmentModal = ({
             </ButtonGroup>
           </ButtonToolbar>
         </div>
-        <div style={{ width: 250, margin: 10 }}>
+        <div className={styles.InputReplenishment}>
           {currencyType === СurrencyType.Dollar ? (
             <InputDollar onChange={setReplenishment} />
           ) : (
