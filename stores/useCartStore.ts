@@ -6,6 +6,7 @@ interface ICartStore {
   addProduct: (product: IProductByCart) => void;
   removeProduct: (id: number) => void;
   setCountProduct: (productId: number, count: number) => void;
+  deleteProducts: () => void;
 }
 
 export const useCartStore = create<ICartStore>((set) => ({
@@ -27,4 +28,9 @@ export const useCartStore = create<ICartStore>((set) => ({
         return product;
       }),
     })),
+  deleteProducts: () => {
+    set(() => ({
+      products: [],
+    }));
+  },
 }));

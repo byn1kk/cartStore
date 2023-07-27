@@ -6,6 +6,8 @@ import CreditCardPlusIcon from "@rsuite/icons/CreditCardPlus";
 import CouponIcon from "@rsuite/icons/Coupon";
 import { useState } from "react";
 import { PaymentType } from "../../stores/models/IPayment";
+import { useMoneyStore } from "../../stores/useMoneyStore";
+import PaymentButton from "./PaymentButton";
 
 interface ICartDrawerProps {
   isOpen: boolean;
@@ -13,12 +15,21 @@ interface ICartDrawerProps {
 }
 
 const CartDrawer = ({ isOpen, onClose }: ICartDrawerProps) => {
+  const [dollars, coins, payment] = useMoneyStore((state) => [
+    state.dollars,
+    state.coins,
+    state.payment,
+  ]);
   const [items, removeProduct, setCountProduct] = useCartStore((state) => [
     state.products,
     state.removeProduct,
     state.setCountProduct,
   ]);
   const [currencyPayment, setCurrencyPayment] = useState(PaymentType.Dollar);
+
+  const sum = items.reduce((acc, item) => {
+    return acc + item.count * item.price;
+  }, 0);
 
   return (
     <Drawer open={isOpen} onClose={onClose}>
@@ -62,11 +73,7 @@ const CartDrawer = ({ isOpen, onClose }: ICartDrawerProps) => {
               ></RadioTile>
             </RadioTileGroup>
           </div>
-          <Button block appearance="primary" color="violet">
-            {`К оплате ${items.reduce((acc, item) => {
-              return acc + item.count * item.price;
-            }, 0)} $`}
-          </Button>
+          <PaymentButton paymentType={currencyPayment} />
         </div>
       </Drawer.Body>
     </Drawer>
