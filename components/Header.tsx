@@ -1,8 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { Button, ButtonGroup, Stack } from "rsuite";
+import CartButton from "./Cart/CartButton";
 
-const HeaderComponent = () => {
+const Header = () => {
   return (
     <>
       <div className="header">
@@ -17,21 +16,11 @@ const HeaderComponent = () => {
             </Button>
           </ButtonGroup>
 
-          <Button appearance="default" color="violet" size="lg">
-            Корзина 0
-          </Button>
+          <CartButton />
         </Stack>
       </div>
 
-      <style jsx>{`
-        .wrapper {
-          margin-top: 50px;
-        }
-        .main-grid {
-          background: white;
-          border-radius: 12px;
-          padding: 8px;
-        }
+      <style jsx>{`      
         .header {
           display: flex;
           justify-content: space-between;
@@ -42,4 +31,4 @@ const HeaderComponent = () => {
   );
 };
 
-export default HeaderComponent;
+export default Header;

@@ -1,19 +1,19 @@
-import { Col, Content, Grid, Row } from "rsuite";
-import HeaderComponent from "./HeaderComponent";
-import CartListComponent from "./CartListComponent";
+import { Col, Grid, Row } from "rsuite";
+import Header from "./Header";
+import ProductList from "./ProductList";
 
-const ContentComponent = () => {
+const Content = () => {
   return (
-    <Content>
+    <div>
       <Grid fluid>
         <div className="wrapper">
           <Row className="show-grid">
             <Col xsHidden smHidden mdHidden lg={3}></Col>
             <Col xs={24} sm={24} md={24} lg={18}>
               <div className="main-grid">
-                <HeaderComponent />
+                <Header />
                 <hr />
-                <CartListComponent />
+                <ProductList />
               </div>
             </Col>
             <Col xsHidden smHidden mdHidden lg={3}></Col>
@@ -29,15 +29,10 @@ const ContentComponent = () => {
             padding: 8px;
             margin-bottom: 50px;
           }
-          .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          }
         `}</style>
       </Grid>
-    </Content>
+    </div>
   );
 };
 
-export default ContentComponent;
+export default Content;

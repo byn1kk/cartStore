@@ -1,11 +1,11 @@
 import { Container } from "rsuite";
-import ContentComponent from "../components/ContentComponent";
+import Content from "../components/Content";
 
 const Index = () => {
   return (
     <div className="show-container">
       <Container>
-        <ContentComponent />
+        <Content />
       </Container>
     </div>
   );

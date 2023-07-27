@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import CartItemComponent from "./CartItemComponent";
+import Product from "./Product";
 import { Placeholder } from "rsuite";
 
-const CartListComponent = () => {
+const ProductList = () => {
   const { data, isLoading } = useQuery(["carts"], () => {
     return axios("https://dummyjson.com/carts");
   });
-  const carts = data?.data.carts.map((x) => x.products).flat();
+  const carts = data?.data.carts[0].products;
 
   if (isLoading) {
     return <Placeholder.Paragraph style={{ marginTop: 30 }} />;
@@ -15,11 +15,11 @@ const CartListComponent = () => {
 
   return (
     <>
-      {carts?.map((x, i) => {
-        return <CartItemComponent key={i} cartItem={x} />;
+      {carts?.map((x) => {
+        return <Product key={x.id} cartItem={x} />;
       })}
     </>
   );
 };
 
-export default CartListComponent;
+export default ProductList;
