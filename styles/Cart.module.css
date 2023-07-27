@@ -9,3 +9,10 @@
 .Cart {
   margin-top: 20px;
 }
+@media (max-width: 991px) {
+  .show-grid-container,
+  .show-grid-col-container {
+    display: block;
+    width: 100%;
+  }
+}

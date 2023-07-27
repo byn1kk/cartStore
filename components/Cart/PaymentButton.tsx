@@ -1,6 +1,6 @@
 import { Button } from "rsuite";
 import { useCartStore } from "../../stores/useCartStore";
-import { СurrencyType } from "../../stores/models/IPayment";
+import { СurrencyType } from "../../stores/models/СurrencyType";
 import { useMoneyStore } from "../../stores/useMoneyStore";
 import { NotificationHelper } from "../../root/NotificationHelper";
 import ReplenishmentModal from "../Modal/ReplenishmentModal";

@@ -2,7 +2,7 @@ import { Button, List } from "rsuite";
 import { useCartStore } from "../../stores/useCartStore";
 import CartList from "./CartList";
 import { useState } from "react";
-import { СurrencyType } from "../../stores/models/IPayment";
+import { СurrencyType } from "../../stores/models/СurrencyType";
 import PaymentButton from "./PaymentButton";
 import RadioPaymentType from "./RadioPaymentType";
 import styles from "../../styles/Cart.module.css";

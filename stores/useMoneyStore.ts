@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { СurrencyType } from "./models/IPayment";
+import { СurrencyType } from "./models/СurrencyType";
 
 interface IMoneyStore {
   dollars: number;

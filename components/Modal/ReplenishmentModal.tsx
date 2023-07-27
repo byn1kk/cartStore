@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useMoneyStore } from "../../stores/useMoneyStore";
 import InputDollar from "./InputDollar";
 import InputCoin from "./InputCoin";
-import { СurrencyType } from "../../stores/models/IPayment";
+import { СurrencyType } from "../../stores/models/СurrencyType";
 import styles from "../../styles/ReplenishmentModal.module.css";
 
 interface IAddDollarModalProps {
@@ -20,9 +20,7 @@ const ReplenishmentModal = ({
   const dollars = useMoneyStore((state) => state.dollars);
   const addDollar = useMoneyStore((state) => state.addDollar);
   const addCoin = useMoneyStore((state) => state.addCoin);
-  const [currencyType, setСurrencyType] = useState(
-    paymentType || СurrencyType.Dollar
-  );
+  const [currencyType, setСurrencyType] = useState(СurrencyType.Dollar);
   const [replenishment, setReplenishment] = useState(0);
   const handleOnSubmit = () => {
     onClose();
@@ -35,6 +33,9 @@ const ReplenishmentModal = ({
   };
 
   useEffect(() => {
+    if (!paymentType) {
+      return;
+    }
     setСurrencyType(paymentType);
   }, [paymentType]);
 

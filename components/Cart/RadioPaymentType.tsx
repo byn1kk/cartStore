@@ -2,7 +2,7 @@ import { RadioTile, RadioTileGroup } from "rsuite";
 import { Icon } from "@rsuite/icons";
 import CreditCardPlusIcon from "@rsuite/icons/CreditCardPlus";
 import CouponIcon from "@rsuite/icons/Coupon";
-import { СurrencyType } from "../../stores/models/IPayment";
+import { СurrencyType } from "../../stores/models/СurrencyType";
 import styles from "../../styles/RadioPaymentType.module.css";
 
 interface IRadioPaymentTypeProps {
