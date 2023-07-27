@@ -1,12 +1,10 @@
-import { Button, RadioTile, RadioTileGroup } from "rsuite";
+import { Button, List } from "rsuite";
 import { useCartStore } from "../../stores/useCartStore";
 import CartList from "./CartList";
-import { Icon } from "@rsuite/icons";
-import CreditCardPlusIcon from "@rsuite/icons/CreditCardPlus";
-import CouponIcon from "@rsuite/icons/Coupon";
 import { useState } from "react";
-import { PaymentType } from "../../stores/models/IPayment";
+import { СurrencyType } from "../../stores/models/IPayment";
 import PaymentButton from "./PaymentButton";
+import RadioPaymentType from "./RadioPaymentType";
 
 interface ICartProps {
   onClose: () => void;
@@ -18,7 +16,7 @@ const Cart = ({ onClose }: ICartProps) => {
     state.removeProduct,
     state.setCountProduct,
   ]);
-  const [currencyPayment, setCurrencyPayment] = useState(PaymentType.Dollar);
+  const [paymentType, setPaymentType] = useState(СurrencyType.Dollar);
 
   if (items.length === 0) {
     return (
@@ -38,43 +36,22 @@ const Cart = ({ onClose }: ICartProps) => {
   }
   return (
     <>
-      {items.map((item) => (
-        <CartList
-          key={item.id}
-          item={item}
-          removeProduct={(id) => removeProduct(id)}
-          setCountProduct={(productId, count) =>
-            setCountProduct(productId, count)
-          }
-        />
-      ))}
+      <List bordered>
+        {items.map((item) => (
+          <List.Item key={item.id}>
+            <CartList
+              item={item}
+              removeProduct={(id) => removeProduct(id)}
+              setCountProduct={(productId, count) =>
+                setCountProduct(productId, count)
+              }
+            />
+          </List.Item>
+        ))}
+      </List>
       <div style={{ marginTop: 20 }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: 20,
-          }}
-        >
-          <RadioTileGroup
-            defaultValue={currencyPayment}
-            inline
-            aria-label="Payment choice"
-            onChange={(value: number) => setCurrencyPayment(value)}
-          >
-            <RadioTile
-              icon={<Icon as={CreditCardPlusIcon} />}
-              label="Оплатить dollar"
-              value={PaymentType.Dollar}
-            ></RadioTile>
-            <RadioTile
-              icon={<Icon as={CouponIcon} />}
-              label="Оплатить coin"
-              value={PaymentType.Coin}
-            ></RadioTile>
-          </RadioTileGroup>
-        </div>
-        <PaymentButton paymentType={currencyPayment} onClick={onClose} />
+        <RadioPaymentType paymentType={paymentType} onChange={setPaymentType} />
+        <PaymentButton paymentType={paymentType} onClick={onClose} />
       </div>
     </>
   );

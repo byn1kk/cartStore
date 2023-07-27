@@ -1,11 +1,14 @@
 import { Button } from "rsuite";
 import { useCartStore } from "../../stores/useCartStore";
-import { PaymentType } from "../../stores/models/IPayment";
+import { СurrencyType } from "../../stores/models/IPayment";
 import { useMoneyStore } from "../../stores/useMoneyStore";
 import { NotificationHelper } from "../../root/NotificationHelper";
+import ReplenishmentModal from "../Modal/ReplenishmentModal";
+import { useState } from "react";
+import InsufficientFunds from "./InsufficientFunds";
 
 interface IPaymentButtonProps {
-  paymentType: PaymentType;
+  paymentType: СurrencyType;
   onClick: () => void;
 }
 
@@ -26,8 +29,8 @@ const PaymentButton = ({ paymentType, onClick }: IPaymentButtonProps) => {
     <>
       <Button
         disabled={
-          (paymentType === PaymentType.Dollar && dollars < sum) ||
-          (paymentType === PaymentType.Coin && coins < sum)
+          (paymentType === СurrencyType.Dollar && dollars < sum) ||
+          (paymentType === СurrencyType.Coin && coins < sum)
         }
         block
         appearance="primary"
@@ -39,14 +42,11 @@ const PaymentButton = ({ paymentType, onClick }: IPaymentButtonProps) => {
           NotificationHelper.ShowSuccess("Оплата прошла успешно");
         }}
       >
-        {`К оплате ${sum} ${paymentType === PaymentType.Dollar ? "$" : "coin"}`}
+        {`К оплате ${sum} ${
+          paymentType === СurrencyType.Dollar ? "$" : "coin"
+        }`}
       </Button>
-      {paymentType === PaymentType.Dollar && dollars < sum && (
-        <p>На счету недостаточно Dollar</p>
-      )}
-      {paymentType === PaymentType.Coin && coins < sum && (
-        <p>На счету недостаточно Сoin</p>
-      )}
+      <InsufficientFunds paymentType={paymentType} />
     </>
   );
 };
