@@ -2,12 +2,14 @@ import { Button } from "rsuite";
 import { useCartStore } from "../../stores/useCartStore";
 import { PaymentType } from "../../stores/models/IPayment";
 import { useMoneyStore } from "../../stores/useMoneyStore";
+import { NotificationHelper } from "../../root/NotificationHelper";
 
 interface IPaymentButtonProps {
   paymentType: PaymentType;
+  onClick: () => void;
 }
 
-const PaymentButton = ({ paymentType }: IPaymentButtonProps) => {
+const PaymentButton = ({ paymentType, onClick }: IPaymentButtonProps) => {
   const [dollars, coins, payment] = useMoneyStore((state) => [
     state.dollars,
     state.coins,
@@ -32,7 +34,9 @@ const PaymentButton = ({ paymentType }: IPaymentButtonProps) => {
         color="violet"
         onClick={() => {
           payment(paymentType, sum);
+          onClick();
           deleteProducts();
+          NotificationHelper.ShowSuccess("Оплата прошла успешно");
         }}
       >
         {`К оплате ${sum} ${paymentType === PaymentType.Dollar ? "$" : "coin"}`}
