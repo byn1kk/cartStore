@@ -17,20 +17,22 @@ const CartList = ({ item, removeProduct, setCountProduct }: ICartListProps) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          marginBottom: 10,
         }}
       >
-        <div style={{ marginBottom: 8 }}>{item.title}</div>
+        <div>{item.title}</div>
         <div
           style={{
             display: "flex",
             flexWrap: "nowrap",
             gap: 8,
+            alignItems: "center",
           }}
         >
           {item.price}$ <b>x</b>
           <InputNumber
             min={1}
-            size="xs"
+            size="sm"
             style={{
               width: 70,
             }}
@@ -39,7 +41,7 @@ const CartList = ({ item, removeProduct, setCountProduct }: ICartListProps) => {
           />
           <IconButton
             icon={<CloseIcon />}
-            size="xs"
+            size="sm"
             onClick={() => removeProduct(item.id)}
           />
         </div>

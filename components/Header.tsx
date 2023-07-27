@@ -1,5 +1,7 @@
-import { Button, ButtonGroup, Stack } from "rsuite";
+import { ButtonGroup, Stack } from "rsuite";
 import CartButton from "./Cart/CartButton";
+import DollarButton from "./DollarButton";
+import CoinButton from "./CoinButton";
 
 const Header = () => {
   return (
@@ -8,19 +10,15 @@ const Header = () => {
         <h4>FakeStore</h4>
         <Stack spacing={8}>
           <ButtonGroup vertical>
-            <Button appearance="primary" color="violet" size="xs">
-              0 $
-            </Button>
-            <Button appearance="primary" color="violet" size="xs">
-              0 Coin
-            </Button>
+            <DollarButton />
+            <CoinButton />
           </ButtonGroup>
 
           <CartButton />
         </Stack>
       </div>
 
-      <style jsx>{`      
+      <style jsx>{`
         .header {
           display: flex;
           justify-content: space-between;
